@@ -1,0 +1,883 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/logos/prepilot_svg (1).svg">
+    <link rel="icon" type="image/png" href="../assets/img/logos/prepilot_svg (1).svg">
+    <title>About Us | Briefdeck</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --primary: #e91e63;
+            --primary-gradient: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glow: 0 0 20px rgba(233, 30, 99, 0.5);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html,
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+            width: 100%;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: #fff;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .text-gradient {
+            background: linear-gradient(to right, #e91e63, #ff4081, #ff80ab);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 12px 28px;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid transparent;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 4px 14px 0 rgba(233, 30, 99, 0.39);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(233, 30, 99, 0.23);
+        }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid var(--border-color);
+            color: white;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: white;
+        }
+
+        /* Mobile Menu Styles */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 12, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            touch-action: none;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .mobile-menu .btn {
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none !important;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem !important;
+            }
+
+            .hero-section {
+                padding-top: 120px !important;
+                padding-bottom: 60px !important;
+            }
+        }
+
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            background: rgba(10, 10, 12, 0.6);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 700;
+            font-size: 1.25rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .nav-link {
+            font-size: 0.95rem;
+            color: var(--text-muted);
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            text-align: center;
+            background: radial-gradient(circle at 50% -20%, rgba(233, 30, 99, 0.15) 0%, transparent 50%);
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            margin-bottom: 24px;
+            letter-spacing: -2px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Section Styles */
+        section {
+            padding: 100px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-tag {
+            color: var(--primary);
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            font-weight: 800;
+            letter-spacing: 2px;
+            margin-bottom: 16px;
+            display: block;
+        }
+
+        /* Our Story */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 24px;
+        }
+
+        .story-content p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .story-visual {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 32px;
+            padding: 40px;
+            position: relative;
+        }
+
+        /* Values */
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+
+        .value-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 40px;
+            border-radius: 24px;
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            background: var(--bg-card-hover);
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(233, 30, 99, 0.1);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-size: 24px;
+            margin-bottom: 24px;
+        }
+
+        /* Team */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 40px;
+            justify-content: center;
+            justify-items: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .team-card {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+
+        .avatar-wrapper {
+            width: 160px;
+            height: 160px;
+            border-radius: 50%;
+            margin-bottom: 24px;
+            border: 3px solid var(--border-color);
+            position: relative;
+            overflow: hidden;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .team-avatar {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            /* Minimal scale to hide edge slivers while maximizing head visibility */
+            transform: scale(1.02);
+            transition: transform 0.3s ease;
+        }
+
+        .team-card:hover .team-avatar {
+            transform: scale(1.1);
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: linear-gradient(135deg, #370b18 0%, #5e1025 100%);
+            border-radius: 32px;
+            padding: 80px 40px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e91e63' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            pointer-events: none;
+        }
+
+        .cta-box>* {
+            position: relative;
+            z-index: 1;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid var(--border-color);
+            padding: 80px 0 40px;
+            background: #050507;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            color: var(--text-muted);
+            margin-top: 20px;
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: white;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+            list-style: none;
+        }
+
+        .footer-col ul li a {
+            color: var(--text-muted);
+            transition: color 0.3s ease;
+        }
+
+        .footer-col ul li a:hover {
+            color: white;
+        }
+
+        .copyright {
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+        }
+
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="./index.html" class="logo">
+                <img src="../assets/img/logos/prepilot_svg (1).svg" width="32" height="32" alt="Briefdeck">
+                Briefdeck
+            </a>
+            <div class="nav-links">
+                <a href="/documentation" class="nav-link">Docs</a>
+                <a href="/how-it-works" class="nav-link">How It Works</a>
+                <a href="/about" class="nav-link" style="color: var(--primary);">About</a>
+                <a href="/login" class="btn btn-outline"
+                    style="padding: 8px 20px; border-radius: 8px; font-weight: 600;">Log In</a>
+                <a href="/signup3.html" class="btn btn-primary"
+                    style="padding: 8px 20px; border-radius: 8px; font-weight: 600;">Get Started</a>
+            </div>
+            <button class="menu-toggle" id="menu-open">
+                <span class="material-icons-round" style="font-size: 28px;">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="container">
+            <h1>About <span class="text-gradient">Us</span></h1>
+            <p>Briefdeck exists to reclaim your most precious resource — your time. We believe meetings shouldn’t start
+                with confusion and stress. They should start with clarity, confidence, and purpose.</p>
+        </div>
+    </header>
+
+    <section class="story-section">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <span class="section-tag">Our Mission</span>
+                    <h2>Context, Clarity, and <span class="text-gradient">Confidence</span></h2>
+                    <p>We help busy founders, managers, and professionals walk into every meeting prepared — without
+                        hours of prep. Briefdeck uses AI to give you context, clarity, and actionable insights before
+                        your call even begins.</p>
+                </div>
+                <div class="story-visual">
+                    <div style="display: flex; flex-direction: column; gap: 20px;">
+                        <div
+                            style="height: 12px; width: 80%; background: var(--primary); opacity: 0.2; border-radius: 6px;">
+                        </div>
+                        <div
+                            style="height: 12px; width: 60%; background: var(--primary); opacity: 0.3; border-radius: 6px;">
+                        </div>
+                        <div
+                            style="height: 12px; width: 90%; background: var(--primary); opacity: 0.1; border-radius: 6px;">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="problem-section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">The Problem</span>
+                <h2>Ending Meeting <span class="text-gradient">Chaos</span></h2>
+                <p class="text-muted" style="max-width: 700px; margin: 0 auto;">If you’ve ever spent 30 minutes before a
+                    meeting searching old emails, scrolling through Slack threads, or reopening past notes to understand
+                    context — you know how chaotic and inefficient meeting prep can be.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-search"></i></div>
+                    <h3>Searching Emails</h3>
+                    <p class="text-muted">No more digging through endless threads to find that one crucial attachment or
+                        decision.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fab fa-slack"></i></div>
+                    <h3>Slack Scrolling</h3>
+                    <p class="text-muted">Stop scrolling back days to remember the context of a conversation.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-sticky-note"></i></div>
+                    <h3>Past Notes</h3>
+                    <p class="text-muted">Instantly reconnect with previous discussions without manual review.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="how-it-works"
+        style="background: rgba(233, 30, 99, 0.02); border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">How It Works</span>
+                <h2>Smart, Focused, <span class="text-gradient">Outcome-Oriented</span></h2>
+                <p class="text-muted" style="max-width: 800px; margin: 0 auto;">Briefdeck intelligently analyzes your
+                    existing data — like calendar events, emails, and past conversations — and generates concise,
+                    actionable pre-briefs delivered right before your meeting.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="values-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Core Principles</span>
+                <h2>What We <span class="text-gradient">Stand For</span></h2>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>Privacy First</h3>
+                    <p class="text-muted">Your data is private. We use secure protocols and never sell or share what you
+                        entrust to us.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Actionable Insights</h3>
+                    <p class="text-muted">Every brief is distilled to only what matters — no fluff, no noise.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-layer-group"></i></div>
+                    <h3>Seamless Integration</h3>
+                    <p class="text-muted">Works within your existing tools (Calendar, Gmail, Slack, Zoom, Meet) without
+                        forcing you to learn new apps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="story-final" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Our Story</span>
+                <h2>Born from <span class="text-gradient">Frustration</span></h2>
+                <p class="text-muted" style="max-width: 800px; margin: 0 auto;">Briefdeck was born out of real
+                    frustrations and real meetings. We asked: Why should preparation be harder than the meeting itself?
+                    We created a tool that lets AI do the heavy lifting — so you can focus on what matters.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: What We Believe -->
+    <section class="values-section" style="padding-top: 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Philosophy</span>
+                <h2>What We <span class="text-gradient">Believe</span></h2>
+                <p class="text-muted" style="max-width: 700px; margin: 0 auto;">Our approach is built on a few core
+                    beliefs that drive every feature we build.</p>
+            </div>
+            <div class="values-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-magic"></i></div>
+                    <h3>Easier Preparation</h3>
+                    <p class="text-muted">Preparation should be easier than the meeting itself. We aim to eliminate the
+                        friction before you even say hello.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-clock"></i></div>
+                    <h3>AI Working Before</h3>
+                    <p class="text-muted">AI should work before meetings, not just after. While others summarize
+                        history, we help you shape the future.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-brain"></i></div>
+                    <h3>Context Over Transcripts</h3>
+                    <p class="text-muted">Context matters more than transcripts. Knowing *why* you're meeting is more
+                        important than a word-for-word record.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-gem"></i></div>
+                    <h3>Time is Precious</h3>
+                    <p class="text-muted">Your time is more valuable than another tool to manage. Briefdeck works for
+                        you, so you don't have to work for it.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: How Briefdeck Is Different -->
+    <section class="different-section"
+        style="background: rgba(233, 30, 99, 0.02); padding: 80px 0; border-top: 1px solid var(--border-color); border-bottom: 1px solid var(--border-color);">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-content">
+                    <span class="section-tag">Differentiation</span>
+                    <h2>How Briefdeck Is <span class="text-gradient">Different</span></h2>
+                    <p>Most tools summarize meetings after they’re over. Briefdeck prepares you before they begin.</p>
+                    <ul style="margin-top: 20px;">
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                            <span><strong>Context, not just notes</strong> — We bring in historical data from all your
+                                apps.</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                            <span><strong>Action items, not raw transcripts</strong> — We focus on outcomes, not just
+                                noise.</span>
+                        </li>
+                        <li style="margin-bottom: 15px; display: flex; align-items: center; gap: 15px;">
+                            <i class="fas fa-check-circle" style="color: var(--primary);"></i>
+                            <span><strong>Preparation, not documentation</strong> — We empower you to lead, not just
+                                record.</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="story-visual">
+                    <div class="value-card" style="margin: 0; background: var(--bg-card-hover);">
+                        <div class="value-icon" style="background: var(--primary-gradient); color: white;"><i
+                                class="fas fa-rocket"></i></div>
+                        <h3>The Pre-Meeting Advantage</h3>
+                        <p class="text-muted">Walk into every call with the confidence of someone who spent hours
+                            preparing, in just 30 seconds of reading.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Who It's For -->
+    <section class="who-section" style="padding: 80px 0;">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Target Audience</span>
+                <h2>Who Briefdeck Is <span class="text-gradient">For</span></h2>
+                <p class="text-muted" style="max-width: 700px; margin: 0 auto;">We built Briefdeck for high-performers
+                    who need to be at their best in every conversation.</p>
+            </div>
+            <div class="values-grid">
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-user-tie"></i></div>
+                    <h3>Founders</h3>
+                    <p class="text-muted">Juggling back-to-back investor, team, and customer meetings without losing the
+                        thread.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-users-cog"></i></div>
+                    <h3>Managers</h3>
+                    <p class="text-muted">Coaching teams and managing projects with perfect recall of every previous
+                        discussion.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon"><i class="fas fa-briefcase"></i></div>
+                    <h3>Professionals</h3>
+                    <p class="text-muted">Anyone who values clarity over chaos and wants to maximize the impact of every
+                        meeting.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">The Team</span>
+                <h2>Meet the <span class="text-gradient">Makers</span></h2>
+            </div>
+            <div class="team-grid">
+                <div class="team-card">
+                    <div class="avatar-wrapper">
+                        <img src="../assets/img/sufyan chamadia.png" alt="Sufvaan Chamadia" class="team-avatar">
+                    </div>
+                    <h3>Sufvaan Chamadia</h3>
+                    <p class="text-muted">Co-Founder & CEO</p>
+                </div>
+                <div class="team-card">
+                    <div class="avatar-wrapper">
+                        <img src="../assets/img/sulaiman_ahmed.png" alt="Sulaiman Ahmed" class="team-avatar">
+                    </div>
+                    <h3>Sulaiman Ahmed</h3>
+                    <p class="text-muted">Co-Founder & CTO</p>
+                </div>
+                <div class="team-card">
+                    <div class="avatar-wrapper">
+                        <div class="team-avatar"
+                            style="background: rgba(233, 30, 99, 0.1); display: flex; align-items: center; justify-content: center; font-size: 2rem;">
+                            🚀</div>
+                    </div>
+                    <h3>Join Us</h3>
+                    <p class="text-muted">Building the next generation of meeting intelligence.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Join the Future of Meetings</h2>
+                <p class="text-muted" style="max-width: 600px; margin: 20px auto 40px; color: #ff80ab;">Whether you’re a
+                    professional tired of prep chaos or a talented builder looking to join a fast-moving team, we’re
+                    just getting started.</p>
+                <a href="./signup3.html" class="btn btn-primary" style="padding: 16px 40px; font-size: 1.1rem;">
+                    Get Started for Free
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="../assets/img/logos/prepilot_svg (1).svg" width="32" height="32" alt="Briefdeck">
+                        Briefdeck
+                    </a>
+                    <p>Briefdeck helps busy managers and founders walk into every call prepared with AI-powered
+                        insights.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/#pricing">Pricing</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="/documentation.html">Documentation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service">Terms of Service</a></li>
+                        <li><a href="/security">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Briefdeck. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuOpen = document.getElementById('menu-open');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-link, .btn');
+
+        if (menuOpen && menuClose && mobileMenu) {
+            menuOpen.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            const closeMenuFunc = () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuClose.addEventListener('click', closeMenuFunc);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenuFunc));
+        }
+    </script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="menu-close">
+            <span class="material-icons-round" style="font-size: 32px;">close</span>
+        </button>
+        <a href="/documentation" class="nav-link">Docs</a>
+        <a href="/how-it-works" class="nav-link">How It Works</a>
+        <a href="/about" class="nav-link" style="color: var(--primary);">About</a>
+        <div style="height: 20px;"></div>
+        <a href="/login" class="btn btn-outline" style="padding: 12px 28px;">Log In</a>
+        <a href="/signup3.html" class="btn btn-primary" style="padding: 12px 28px;">Get Started</a>
+    </div>
+</body>
+
+</html>

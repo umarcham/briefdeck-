@@ -1,0 +1,902 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="apple-touch-icon" sizes="76x76" href="../assets/img/logos/prepilot_svg (1).svg">
+    <link rel="icon" type="image/png" href="../assets/img/logos/prepilot_svg (1).svg">
+    <title>How It Works | Briefdeck</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://kit.fontawesome.com/42d5adcbca.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --bg-dark: #0a0a0c;
+            --bg-card: rgba(255, 255, 255, 0.03);
+            --bg-card-hover: rgba(255, 255, 255, 0.08);
+            --brand-pink: #e91e63;
+            --brand-pink-hover: #c2185b;
+            --text-main: #ffffff;
+            --text-muted: #94a3b8;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --primary-gradient: linear-gradient(135deg, #e91e63 0%, #c2185b 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: var(--text-main);
+            line-height: 1.6;
+            background: var(--bg-dark);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Navbar (Matched to other dark pages) */
+        .navbar {
+            background: rgba(10, 10, 12, 0.6);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .nav-content {
+            height: 72px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--text-main);
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--text-muted);
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: var(--brand-pink);
+        }
+
+        .btn {
+            padding: 10px 24px;
+            border-radius: 10px;
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--primary-gradient);
+            color: white;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 16px rgba(233, 30, 99, 0.3);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            background: transparent;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+            transform: translateY(-2px);
+        }
+
+        /* Mobile Menu Styles */
+        .menu-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-main);
+            cursor: pointer;
+            padding: 8px;
+        }
+
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(10, 10, 12, 0.98);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            z-index: 2000;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 32px;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            touch-action: none;
+        }
+
+        .mobile-menu.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .mobile-menu .nav-link {
+            font-size: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .mobile-menu .btn {
+            width: 80%;
+            max-width: 300px;
+        }
+
+        .close-menu {
+            position: absolute;
+            top: 24px;
+            right: 24px;
+            color: white;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        @media (max-width: 992px) {
+            .nav-links {
+                display: none !important;
+            }
+
+            .menu-toggle {
+                display: block;
+            }
+
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero {
+                padding-top: 120px;
+                padding-bottom: 60px;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            padding-top: 160px;
+            padding-bottom: 100px;
+            text-align: center;
+            background: radial-gradient(circle at top center, rgba(233, 30, 99, 0.08) 0%, transparent 70%);
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -2px;
+            margin-bottom: 1rem;
+            color: var(--text-main);
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-muted);
+            margin-bottom: 4rem;
+        }
+
+        /* Video Section */
+        .video-container {
+            width: 100%;
+            max-width: 1000px;
+            margin: 0 auto;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            position: relative;
+            background: #000;
+            aspect-ratio: 16/9;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Highlights Section */
+        .highlights {
+            padding: 100px 0;
+            background: var(--bg-dark);
+        }
+
+        .highlights-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .highlights h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.25rem;
+            font-weight: 800;
+            margin-bottom: 2rem;
+        }
+
+        .highlights-list {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            text-align: left;
+        }
+
+        .highlight-item {
+            background: var(--bg-card);
+            padding: 40px 32px;
+            border-radius: 24px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .highlight-item:hover {
+            transform: translateY(-5px);
+            background: var(--bg-card-hover);
+            border-color: rgba(233, 30, 99, 0.3);
+        }
+
+        .highlight-icon {
+            width: 56px;
+            height: 56px;
+            background: rgba(233, 30, 99, 0.08);
+            color: var(--brand-pink);
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+
+        .highlight-icon span {
+            font-size: 1.5rem;
+        }
+
+        .highlight-item h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        /* 4-Step Flow */
+        .flow-section {
+            padding: 120px 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 120px;
+            align-items: center;
+        }
+
+        .step-content {
+            max-width: 480px;
+        }
+
+        .step-number {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1rem;
+            font-weight: 800;
+            color: var(--brand-pink);
+            background: rgba(233, 30, 99, 0.1);
+            padding: 4px 12px;
+            border-radius: 20px;
+            display: inline-block;
+            margin-bottom: 20px;
+        }
+
+        .step-content h3 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+        }
+
+        .step-content p {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+        }
+
+        .step-visual {
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            border: 1px solid var(--border-color);
+            background: var(--bg-card);
+        }
+
+        .step-visual img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Reverse order on even steps */
+        .step-row:nth-child(even) .steps-grid {
+            direction: rtl;
+        }
+
+        .step-row:nth-child(even) .step-content {
+            direction: ltr;
+        }
+
+        .step-row:nth-child(even) .step-visual {
+            direction: ltr;
+        }
+
+        .step-row {
+            margin-bottom: 100px;
+        }
+
+        /* Trust Strip */
+        .trust-strip {
+            background: var(--bg-dark);
+            padding: 80px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+        }
+
+        .trust-card {
+            background: var(--bg-card);
+            padding: 32px 24px;
+            border-radius: 20px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .trust-card:hover {
+            background: var(--bg-card-hover);
+            border-color: rgba(233, 30, 99, 0.3);
+            transform: translateY(-4px);
+        }
+
+        .trust-icon {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .trust-card h4 {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 8px;
+            color: var(--text-main);
+        }
+
+        .trust-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* CTA Section */
+        .cta {
+            padding: 140px 0;
+            text-align: center;
+        }
+
+        .cta-box {
+            background: #0f172a;
+            /* Deep shade for depth */
+            background-image: radial-gradient(circle at 50% -20%, rgba(233, 30, 99, 0.15) 0%, transparent 60%);
+            padding: 100px 40px;
+            border-radius: 48px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            box-shadow: 0 40px 100px -20px rgba(15, 23, 42, 0.3);
+        }
+
+        /* Subtle Glow behind text */
+        .cta-box::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 400px;
+            height: 200px;
+            background: var(--brand-pink);
+            filter: blur(120px);
+            opacity: 0.08;
+            pointer-events: none;
+        }
+
+        .cta-box h2 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            letter-spacing: -2px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .text-accent-pink {
+            background: linear-gradient(to right, #e91e63, #f06292);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .cta-buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 24px;
+            margin-top: 50px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .btn-glass {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 16px 40px;
+            font-size: 1.1rem;
+            border-radius: 12px;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .btn-glass:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: rgba(255, 255, 255, 0.2);
+            transform: translateY(-2px);
+        }
+
+        /* Footer (Matched) */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid var(--border-color);
+            background: var(--bg-dark);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand p {
+            margin-top: 20px;
+            color: var(--text-muted);
+            max-width: 300px;
+        }
+
+        .footer-col h4 {
+            font-family: 'Outfit', sans-serif;
+            margin-bottom: 24px;
+            font-weight: 700;
+        }
+
+        .footer-col ul {
+            list-style: none;
+        }
+
+        .footer-col ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-col ul li a {
+            text-decoration: none;
+            color: var(--text-muted);
+            transition: color 0.2s;
+        }
+
+        .footer-col ul li a:hover {
+            color: var(--brand-pink);
+        }
+
+        .copyright {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-color);
+            color: var(--text-muted);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 1024px) {
+            .highlights-list {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                text-align: center;
+            }
+
+            .step-content {
+                max-width: 100%;
+            }
+
+            .step-row:nth-child(even) .steps-grid {
+                direction: ltr;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="/" class="logo">
+                <img src="../assets/img/logos/prepilot_svg (1).svg" width="32" height="32" alt="Briefdeck">
+                Briefdeck
+            </a>
+            <div class="nav-links">
+                <a href="/documentation.html" class="nav-link">Docs</a>
+                <a href="/how-it-works" class="nav-link" style="color: var(--brand-pink);">How It Works</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/login" class="btn btn-outline"
+                    style="padding: 8px 20px; border-radius: 8px; font-weight: 600;">Log In</a>
+                <a href="/signup3.html" class="btn btn-primary"
+                    style="padding: 8px 20px; border-radius: 8px; font-weight: 600;">Get
+                    Started</a>
+            </div>
+            <button class="menu-toggle" id="menu-open">
+                <span class="material-icons-round" style="font-size: 28px;">menu</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container">
+            <h1>See how Briefdeck works</h1>
+            <p class="subtitle">From calendar to clarity — automatically.</p>
+
+            <div class="video-container">
+                <!-- Loom Embed Wrapper -->
+                <div style="position: relative; padding-bottom: 56.25%; height: 0;">
+                    <iframe
+                        src="https://www.loom.com/embed/fe14ad2617994b858a12586a24bb1cf9?hide_owner=true&hide_share=true&hide_title=true&hide_embed_overlay=true"
+                        frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen
+                        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Highlights Section -->
+    <section class="highlights">
+        <div class="container">
+            <div class="highlights-content">
+                <h2>In this short demo, you’ll see:</h2>
+                <div class="highlights-list">
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><span class="material-icons-round">smart_toy</span></div>
+                        <h3>Disruption-Free</h3>
+                        <p>See how the Briefdeck bot joins your meeting silently without interruption.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><span class="material-icons-round">psychology</span></div>
+                        <h3>True Context</h3>
+                        <p>Witness how AI understands the nuances of your conversation in real-time.</p>
+                    </div>
+                    <div class="highlight-item">
+                        <div class="highlight-icon"><span class="material-icons-round">description</span></div>
+                        <h3>Actionable Briefs</h3>
+                        <p>Get a clear look at the final automated brief delivered right to your dashboard.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4-Step Flow -->
+    <section class="flow-section">
+        <div class="container">
+            <div class="section-header">
+                <h2>Master every meeting in 4 steps</h2>
+            </div>
+
+            <!-- Step 1 -->
+            <div class="step-row">
+                <div class="steps-grid">
+                    <div class="step-content">
+                        <span class="step-number">STEP 01</span>
+                        <h3>Connect your calendar</h3>
+                        <p>Briefdeck securely connects to your Google Calendar to understand upcoming meetings,
+                            participants, and relevant threads.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="../assets/img/inte.png" alt="Connect Calendar">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-row">
+                <div class="steps-grid">
+                    <div class="step-content">
+                        <span class="step-number">STEP 02</span>
+                        <h3>Briefdeck joins the meeting</h3>
+                        <p>The Briefdeck bot joins silently to capture context. No speaking, no introductions, and no
+                            disruptions to your workflow.</p>
+                    </div>
+                    <div class="step-visual">
+                        <div style="background: rgba(255, 255, 255, 0.05); padding: 40px; text-align: center;">
+                            <div
+                                style="background: var(--bg-dark); padding: 20px; border-radius: 12px; display: inline-flex; align-items: center; gap: 12px; box-shadow: 0 10px 25px rgba(0,0,0,0.2); border: 1px solid var(--border-color);">
+                                <div
+                                    style="width: 44px; height: 44px; background: var(--brand-pink); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white;">
+                                    <span class="material-icons-round" style="font-size: 1.25rem;">smart_toy</span>
+                                </div>
+                                <div style="text-align: left;">
+                                    <div style="font-weight: 700; font-size: 0.9rem;">Briefdeck Bot</div>
+                                    <div style="font-size: 0.75rem; color: var(--text-muted);">Joined the meeting</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-row">
+                <div class="steps-grid">
+                    <div class="step-content">
+                        <span class="step-number">STEP 03</span>
+                        <h3>AI prepares your brief</h3>
+                        <p>Key points, action items, and relevant context are generated automatically. We turn noise
+                            into structured clarity.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="../assets/img/nbb.png" alt="AI Brief Generation">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-row">
+                <div class="steps-grid">
+                    <div class="step-content">
+                        <span class="step-number">STEP 04</span>
+                        <h3>Start the meeting prepared</h3>
+                        <p>No scrambling. No confusion. Just clarity. Open your brief and lead with confidence every
+                            single time.</p>
+                    </div>
+                    <div class="step-visual">
+                        <img src="../assets/img/nbb4.png" alt="Prepared Meeting">
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Trust Strip -->
+    <section class="trust-strip">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-card">
+                    <span class="material-icons-round trust-icon" style="color: #22c55e;">verified_user</span>
+                    <h4>Privacy-first</h4>
+                    <p>By design, for your safety.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="material-icons-round trust-icon" style="color: #3b82f6;">visibility_off</span>
+                    <h4>Read-only</h4>
+                    <p>We never edit your data.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="material-icons-round trust-icon" style="color: #f59e0b;">settings_suggest</span>
+                    <h4>Fully Controlled</h4>
+                    <p>You manage all permissions.</p>
+                </div>
+                <div class="trust-card">
+                    <span class="material-icons-round trust-icon" style="color: var(--brand-pink);">lock_person</span>
+                    <h4>Brief Only</h4>
+                    <p>Data used only for your clarity.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Start automating your <span class="text-accent-pink">clarity.</span></h2>
+                <div class="cta-buttons">
+                    <a href="/signup3.html" class="btn btn-primary"
+                        style="padding: 18px 48px; font-size: 1.15rem;">Start
+                        free</a>
+                    <a href="/security" class="btn-glass">Read about security</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <img src="../assets/img/logos/prepilot_svg (1).svg" width="32" height="32" alt="Briefdeck">
+                        Briefdeck
+                    </a>
+                    <p>Briefdeck helps busy managers and founders walk into every call prepared with AI-powered
+                        insights.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Product</h4>
+                    <ul>
+                        <li><a href="/#features">Features</a></li>
+                        <li><a href="/#pricing">Pricing</a></li>
+                        <li><a href="/how-it-works">How It Works</a></li>
+                        <li><a href="/documentation.html">Docs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="/about">About Us</a></li>
+                        <li><a href="#">Blog</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul>
+                        <li><a href="/privacy">Privacy Policy</a></li>
+                        <li><a href="/terms-of-service">Terms of Service</a></li>
+                        <li><a href="/security">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="copyright">
+                &copy; 2025 Briefdeck. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    <script>
+        // Mobile Menu Toggle Logic
+        const menuOpen = document.getElementById('menu-open');
+        const menuClose = document.getElementById('menu-close');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = mobileMenu.querySelectorAll('.nav-link, .btn');
+
+        if (menuOpen && menuClose && mobileMenu) {
+            menuOpen.addEventListener('click', () => {
+                mobileMenu.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            const closeMenuFunc = () => {
+                mobileMenu.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            menuClose.addEventListener('click', closeMenuFunc);
+            mobileLinks.forEach(link => link.addEventListener('click', closeMenuFunc));
+        }
+    </script>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu" id="mobile-menu">
+        <button class="close-menu" id="menu-close">
+            <span class="material-icons-round" style="font-size: 32px;">close</span>
+        </button>
+        <a href="/documentation" class="nav-link">Docs</a>
+        <a href="/how-it-works" class="nav-link" style="color: var(--brand-pink);">How It Works</a>
+        <a href="/about" class="nav-link">About</a>
+        <div style="height: 20px;"></div>
+        <a href="/login" class="btn btn-outline" style="padding: 12px 28px;">Log In</a>
+        <a href="/signup3.html" class="btn btn-primary" style="padding: 12px 28px;">Get Started</a>
+    </div>
+</body>
+
+</html>
